@@ -9,7 +9,6 @@ public class MyJFrame extends JFrame {
     private JPanel mainPanel, buttonPanel, eastPanel, westPanel, northPanel;
     public static JTextArea outputTextArea;
     private JTextField inputField;
-    private JTextArea statsArea;
 
     public MyJFrame() {
         // Set up the JFrame
@@ -24,7 +23,6 @@ public class MyJFrame extends JFrame {
         // Create NORTH panel for stats
         northPanel = new JPanel(new BorderLayout());
         northPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        // Create thin label with bold text and different font
         JLabel statsLabel = new JLabel(
                 "<html><b>Player Stats</b>:______Resilience: 20______|______Name: Aureus______|______Location: Kitchen______|______Age: 4 ______|______Mood: Happy______|______Spirit: 0</html>");
         statsLabel.setFont(new Font("Arial", Font.BOLD, 14));
@@ -33,7 +31,6 @@ public class MyJFrame extends JFrame {
         // Create EAST panel with buttons
         eastPanel = new JPanel(new GridLayout(4, 1));
         eastPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        // Load the icon using absolute path
         ImageIcon icon = new ImageIcon(
                 "C:\\Users\\david\\OneDrive\\Documents\\RAWR\\rarw\\rawr\\src\\main\\java\\com\\example\\images\\paper.png");
         ImageIcon scaledIcon = new ImageIcon(icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -61,10 +58,10 @@ public class MyJFrame extends JFrame {
                 String text = inputField.getText();
                 switch (text) {
                     case "poop":
-                        outputTextArea.append("You said poop!!!");
+                        outputTextArea.append("You said poop!!!\n");
                         break;
-
                     default:
+                        outputTextArea.append("You said: " + text + "\n");
                         break;
                 }
                 inputField.setText("");
@@ -80,6 +77,7 @@ public class MyJFrame extends JFrame {
         JButton button4 = new JButton("Button 4");
         JButton button5 = new JButton("Button 5");
         JButton button6 = new JButton("Button 6");
+        JButton button7 = new JButton("Button 6");
 
         buttonPanel.add(button1);
         buttonPanel.add(button2);
@@ -93,13 +91,17 @@ public class MyJFrame extends JFrame {
         button2.addActionListener(new ButtonListener());
         button3.addActionListener(new ButtonListener());
         button4.addActionListener(new ButtonListener());
+        button7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Game.createCharacter();
+            }
+        });
         button5.addActionListener(new ButtonListener());
         button6.addActionListener(new ButtonListener());
 
         mainPanel.add(northPanel, BorderLayout.NORTH);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
-
         mainPanel.add(eastPanel, BorderLayout.EAST);
         mainPanel.add(westPanel, BorderLayout.WEST);
 
@@ -121,5 +123,4 @@ public class MyJFrame extends JFrame {
             outputTextArea.append(text + "\n");
         }
     }
-
 }

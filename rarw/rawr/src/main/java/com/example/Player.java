@@ -7,9 +7,9 @@ public class Player {
     String name, rep, grade;
     int age = 0;
     boolean pottyTrained = false;
-    boolean gender = false;
+    public boolean gender = false;
     String Gender = "They/Them";
-    String[] inventory = { "Handbook", "Penny" };
+    String[] inventory = { "Handbook", "Penny", "Pacifier" };
 
     public Player(String name, int em, int sm, int gm, int fm) {
         this.em = em;
