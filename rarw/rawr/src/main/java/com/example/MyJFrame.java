@@ -1,26 +1,40 @@
 package com.example;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class MyJFrame extends JFrame {
     protected static JFrame frame;
-    private JPanel mainPanel, buttonPanel, eastPanel, westPanel, northPanel;
+    private final JPanel mainPanel;
+    private JPanel buttonPanel, eastPanel, westPanel, northPanel;
     public static JTextArea outputTextArea;
     private JTextField inputField;
 
     public MyJFrame() {
-        // Set up the JFrame
+
         setTitle("R.A.W.R. The Rise of Taliber.");
         setSize(1200, 900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create the main panel with BorderLayout
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        // Create NORTH panel for stats
         northPanel = new JPanel(new BorderLayout());
         northPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JLabel statsLabel = new JLabel(
@@ -28,7 +42,6 @@ public class MyJFrame extends JFrame {
         statsLabel.setFont(new Font("Arial", Font.BOLD, 14));
         northPanel.add(statsLabel, BorderLayout.CENTER);
 
-        // Create EAST panel with buttons
         eastPanel = new JPanel(new GridLayout(4, 1));
         eastPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         ImageIcon icon = new ImageIcon(
@@ -36,40 +49,32 @@ public class MyJFrame extends JFrame {
         ImageIcon scaledIcon = new ImageIcon(icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
         createVerticalButtonPanel(eastPanel, scaledIcon, scaledIcon, scaledIcon, scaledIcon);
 
-        // Create WEST panel with buttons
         westPanel = new JPanel(new GridLayout(4, 1));
         westPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         createVerticalButtonPanel(westPanel, scaledIcon, scaledIcon, scaledIcon, scaledIcon);
 
-        // Adjust width of east and west panels
         Dimension sidePanelSize = new Dimension(40, 0);
         eastPanel.setPreferredSize(sidePanelSize);
         westPanel.setPreferredSize(sidePanelSize);
 
-        // Create the text area for output
         outputTextArea = new JTextArea();
         outputTextArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(outputTextArea);
 
-        // Create the text field for input
+
         inputField = new JTextField();
         inputField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String text = inputField.getText();
                 switch (text) {
-                    case "poop":
-                        outputTextArea.append("You said poop!!!\n");
-                        break;
-                    default:
-                        outputTextArea.append("You said: " + text + "\n");
-                        break;
+                    case "poop" -> outputTextArea.append("You said poop!!!\n");
+                    default -> outputTextArea.append("You said: " + text + "\n");
                 }
                 inputField.setText("");
             }
         });
         inputField.setPreferredSize(new Dimension(100, 30));
 
-        // Create the button panel
         buttonPanel = new JPanel(new GridLayout(1, 6));
         JButton button1 = new JButton("Button 1");
         JButton button2 = new JButton("Button 2");
@@ -122,5 +127,65 @@ public class MyJFrame extends JFrame {
             String text = source.getText();
             outputTextArea.append(text + "\n");
         }
+    }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+
+    public static void setFrame(JFrame frame) {
+        MyJFrame.frame = frame;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JPanel getButtonPanel() {
+        return buttonPanel;
+    }
+
+    public void setButtonPanel(JPanel buttonPanel) {
+        this.buttonPanel = buttonPanel;
+    }
+
+    public JPanel getEastPanel() {
+        return eastPanel;
+    }
+
+    public void setEastPanel(JPanel eastPanel) {
+        this.eastPanel = eastPanel;
+    }
+
+    public JPanel getWestPanel() {
+        return westPanel;
+    }
+
+    public void setWestPanel(JPanel westPanel) {
+        this.westPanel = westPanel;
+    }
+
+    public JPanel getNorthPanel() {
+        return northPanel;
+    }
+
+    public void setNorthPanel(JPanel northPanel) {
+        this.northPanel = northPanel;
+    }
+
+    public static JTextArea getOutputTextArea() {
+        return outputTextArea;
+    }
+
+    public static void setOutputTextArea(JTextArea outputTextArea) {
+        MyJFrame.outputTextArea = outputTextArea;
+    }
+
+    public JTextField getInputField() {
+        return inputField;
+    }
+
+    public void setInputField(JTextField inputField) {
+        this.inputField = inputField;
     }
 }

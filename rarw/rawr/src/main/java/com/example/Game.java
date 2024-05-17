@@ -8,15 +8,24 @@ public class Game {
         private static Player player;
 
         public static void startGame() {
-                // Ensure the outputTextArea is not null
                 outputTextArea = MyJFrame.outputTextArea;
 
-                // Create a new player object
                 player = new Player("blargh!", 1, 1, 1, 1);
-
                 startIntro();
+                String smStr = JOptionPane.showInputDialog(null, "Emotional Maturity: ", "Age Input",
+                JOptionPane.QUESTION_MESSAGE);
+player.sm = Integer.parseInt(smStr);
                 firstChapter();
+                String gmStr = JOptionPane.showInputDialog(null, "Social Maturity: ", "Age Input",
+                JOptionPane.QUESTION_MESSAGE);
+player.gm = Integer.parseInt(gmStr);
                 secondChapter();
+                String fmStr = JOptionPane.showInputDialog(null, "Gross Motor: ", "Gross Input",
+                JOptionPane.QUESTION_MESSAGE);
+player.fm = Integer.parseInt(fmStr);
+                String emStr = JOptionPane.showInputDialog(null, "Fine Motor: " , "Fine Input",
+                JOptionPane.QUESTION_MESSAGE);
+player.em = Integer.parseInt(emStr);
         }
 
         private static void secondChapter() {
