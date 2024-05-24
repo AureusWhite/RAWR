@@ -53,25 +53,19 @@ public class MyJFrame extends JFrame {
         westPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         createVerticalButtonPanel(westPanel, scaledIcon, scaledIcon, scaledIcon, scaledIcon);
 
-        Dimension sidePanelSize = new Dimension(40, 0);
-        eastPanel.setPreferredSize(sidePanelSize);
-        westPanel.setPreferredSize(sidePanelSize);
+        
 
-        outputTextArea = new JTextArea();
-        outputTextArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(outputTextArea);
+        
 
 
-        inputField = new JTextField();
-        inputField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String text = inputField.getText();
-                switch (text) {
-                    case "poop" -> outputTextArea.append("You said poop!!!\n");
-                    default -> outputTextArea.append("You said: " + text + "\n");
-                }
-                inputField.setText("");
+        
+        inputField.addActionListener((ActionEvent e) -> {
+            String text = inputField.getText();
+            switch (text) {
+                case "poop" -> outputTextArea.append("You said poop!!!\n");
+                default -> outputTextArea.append("You said: " + text + "\n");
             }
+            inputField.setText("");
         });
         inputField.setPreferredSize(new Dimension(100, 30));
 
@@ -82,8 +76,7 @@ public class MyJFrame extends JFrame {
         JButton button4 = new JButton("Button 4");
         JButton button5 = new JButton("Button 5");
         JButton button6 = new JButton("Button 6");
-        JButton button7 = new JButton("Button 6");
-
+        
         buttonPanel.add(button1);
         buttonPanel.add(button2);
         buttonPanel.add(button3);
@@ -96,11 +89,6 @@ public class MyJFrame extends JFrame {
         button2.addActionListener(new ButtonListener());
         button3.addActionListener(new ButtonListener());
         button4.addActionListener(new ButtonListener());
-        button7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Game.createCharacter();
-            }
-        });
         button5.addActionListener(new ButtonListener());
         button6.addActionListener(new ButtonListener());
 
