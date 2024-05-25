@@ -1,4 +1,4 @@
-package com.rawr;
+package com.rawr3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,14 +17,14 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 class GameGUI extends JFrame implements ActionListener {
-    public Player player;
-    public static JTextArea outText;
+    public Player player=Player.getPlayer();
+    public static   JTextArea outText;
 
-    public static JTextArea getOutText() {
+    public static   JTextArea getOutText() {
         return outText;
     }
 
-    public static void setOutText(JTextArea outText) {
+    public   void setOutText(JTextArea outText) {
         GameGUI.outText = outText;
     }
 
@@ -96,7 +96,8 @@ class GameGUI extends JFrame implements ActionListener {
             case "Put Down:" -> outText.append("let\n");
             case "Emote:" -> outText.append("ups\n");
             case "skillPlace" -> {
-                player.perk();
+                
+                outText.append(player.perk());
             }
         }
     }

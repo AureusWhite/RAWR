@@ -1,12 +1,23 @@
-package com.rawr;
+package com.rawr3;
 
 import javax.swing.JOptionPane;
 
+import static com.rawr3.GameGUI.getOutText;
+
+
 class Player {
 
+
+
+    public static Player player;
+
+	public static Player getPlayer() {
+        return player;
+            }
+
+
     private String name;
-    private String gender;
-    private String perk;
+    public static String perk;
 
     void createCharacter() {
 String inputValue = JOptionPane.showInputDialog("What is your name?");
@@ -18,19 +29,18 @@ String[] possibleValues = { "Boy", "Girl", "Y-Rep", "Non-conforming", "Other" };
                     "What is your gender?", "Input",
                     JOptionPane.INFORMATION_MESSAGE, null,
                     possibleValues, possibleValues[0]);
-    this.gender = selectedValue;
     String[] possibleValues2 = { "Well Manered", "Cantancuous", "The Shy Kid", "Non-conforming", "Conspicious","Disgrace!","Lone Pup","Loyalist","Confeterate" };
-    GameGUI.getOutText().append("Perk? \n"); 
+        getOutText().append("Perk? \n"); 
     selectedValue = (String) JOptionPane.showInputDialog(null,
                     "What is your gender?", "Input",
                     JOptionPane.INFORMATION_MESSAGE, null,
                     possibleValues2, possibleValues2[0]);
-    this.gender = selectedValue;               
+    this.perk = selectedValue;               
 
     }
 
-    public String perk() {
-        switch(this.perk){
+    public static String perk() {
+        switch(perk){
             case "Well Manered" -> System.out.println("blargh");
             case "Cantancuous" -> System.out.println("blargh");
             case "The Shy Kid" -> System.out.println("blargh");
@@ -40,7 +50,7 @@ String[] possibleValues = { "Boy", "Girl", "Y-Rep", "Non-conforming", "Other" };
             case "Loyalist" -> System.out.println("blargh");
             case "Confeterate" -> System.out.println("blargh");
         }
-        return this.perk;
+        return perk;
 }
 
     }
