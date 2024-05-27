@@ -1,34 +1,28 @@
-
 package com.rawr3;
 
 
 import javax.swing.JTextArea;
 class Game {
-    private static  JTextArea outText = GameGUI.getOutText();
+    JTextArea outText=GameGUI.outText;
+    public static boolean isRunning;
 
-    public static JTextArea getOutText() {
-        return outText;
-    }
-
-    public static void setOutText(JTextArea outText) {
-        Game.outText = outText;
-    }
-      String buffer = "\n";
-
-    public Game(int i, GameGUI gamegui, Player player){
+    public Game(int i){
 
     }
-    public   String buffer(int lineNum){
-        for(int i=0;i<lineNum;i++){
-            return buffer;
-        }
-        outText.append("buffer");
-        return null;
-    }
 
-    public void startGame() {
-        Player player = new Player();
+    public void startGame(Player player,GameGUI gameGUI) {
         player.createCharacter();
+        gameLoop();
+    }
+
+    private void gameLoop() {
+do{
+GameGUI.outText.append("Loop de doop.");
+for(int i=0;i<100;i++){
+GameGUI.outText.append("Loop de doop mo faka\n");
+}
+isRunning=false;
+}while(isRunning);
     }
 
 }

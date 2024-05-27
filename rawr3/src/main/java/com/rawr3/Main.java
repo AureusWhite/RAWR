@@ -4,9 +4,9 @@ import javax.swing.SwingUtilities;
 
 
 public class Main {
-    public   Player player;
+    public static   Player player;
     
-    public static  void main(String[] args) {
+    public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
 
 
@@ -15,8 +15,8 @@ public class Main {
                 Player player = new Player();
                 GameGUI gamegui = new GameGUI(player);
                 gamegui.setVisible(true);
-                Game game = new Game(2, gamegui, player);
-                game.startGame();
+                Game game = new Game(3);
+                game.startGame(player, gamegui);
             }
         });
         
