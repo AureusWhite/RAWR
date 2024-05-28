@@ -75,7 +75,7 @@ class GameGUI extends JFrame implements ActionListener {
         button4.addActionListener(this);
         button5.addActionListener(this);
         button6.addActionListener(this);
-        inputField.addActionListener(this); // Added action listener for input field
+        inputField.addActionListener(this);
 
         add(StatusPanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.SOUTH);
@@ -102,10 +102,11 @@ class GameGUI extends JFrame implements ActionListener {
             outText.append("You Did the Thing.\n");
         } else if(e.getSource() == inputField) {
             String text = inputField.getText();
-            outText.append(text + "\n");
+            switch (text) {
+                case "poop" -> outText.append("You said poop!!!\n");
+                default -> outText.append("You said: " + text + "\n");
+            }
             inputField.setText("");
         }
+        }
     }
-
-    // Getter and Setter methods (if necessary) can be added here
-}
